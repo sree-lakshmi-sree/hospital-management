@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hospital'
 ]
 
 MIDDLEWARE = [
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'hospital_mangement.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'NAME': 'hospital-management',
-        'PASSWORD': 'rootroot',
+        'HOST': '127.0.0.1',
+        'NAME': 'hospitalmanagement',
+        'PASSWORD': '',
         'PORT': '3306',
         'USER': 'root',
     }
