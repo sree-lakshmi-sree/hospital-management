@@ -12,10 +12,12 @@ def home(request):
 @csrf_exempt
 def signIn(request):
     if request.method == "POST":
-        if (Admin.objects.filter(user_name=request.POST["userName"], password=request.POST["password"])).exists():
-            return redirect(home)
+        user_name = request.POST["userName"]
+        if (Admin.objects.filter(user_name=user_name, password=request.POST["password"])).exists():
+            return render(request, "home.html", {'user_name': user_name, 'logged_in': True})
         return render(request, "signIn.html", {'invalidCreds': True})
     return render(request, "signIn.html")
+
 
 @csrf_exempt
 def signUp(request):
@@ -28,3 +30,7 @@ def signUp(request):
             return redirect(signIn)
         return render(request, "signUp.html", {"invalidCreds": True})
     return render(request, "signUp.html")
+
+
+def signOut(request):
+    return render(request, "home.html", {'logged_in': False})
