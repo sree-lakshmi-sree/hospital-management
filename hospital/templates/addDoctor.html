@@ -34,7 +34,7 @@
     <div class="contact_section layout_padding margin_90">
       <div class="col-md-6">
         <form method="post" class="contact_box">
-          <h1 class="book_text">Sign Up</h1>
+          <h1 class="book_text">Add Doctor</h1>
           {% if invalidCreds %}
           <div style="display: flex; align-items: center">
             <i class="fa fa-exclamation-circle warning" aria-hidden="true"></i>
@@ -44,26 +44,42 @@
           <input
             type="text"
             class="text_box"
-            placeholder="UserName"
-            name="userName"
+            placeholder="Doctor Name"
+            name="name"
             required
           />
           <input
-            type="Password"
+            type="time"
             class="text_box"
-            placeholder="Password"
-            name="password"
+            placeholder="OP start time"
+            name="OP start time"
             required
           />
           <input
-            type="Password"
+            type="time"
             class="text_box"
-            placeholder="Confirm Password"
-            name="confirmPassword"
+            placeholder="OP end time"
+            name="OP end time"
             required
           />
-          <div class="send_bt"><input type="submit" value="PROCEED" /></div>
-          <a href="signIn">Already have an account? Sign In </a>
+          <select name="OP slots" class="text_box select_box">
+            <option value="">Select a slot</option>
+            <option value="MON-FRI">MON-FRI</option>
+            <option value="SUN-THUR">SUN-THUR</option>
+            <option value="SAT-WED">SAT-WED</option>
+            <option value="FRI-TUE">FRI-TUE</option>
+            <option value="THUR-MON">THUR-MON</option>
+            <option value="WED-SUN">WED-SUN</option>
+            <option value="TUE-SAT">TUE-SAT</option>
+        </select>
+          <input
+            type="number"
+            class="text_box"
+            placeholder="Consultation Fee"
+            name="consultationFee"
+            required
+          />
+          <div class="send_bt"><input type="submit" value="Proceed" /></div>
         </form>
       </div>
     </div>
