@@ -21,15 +21,15 @@
             </a>
           </div>
           <div class="nav-bar">
-            <a class="nav-link nav-link-title" href="home">Home</a>
+            <a class="nav-link nav-link-title active" href="home">Home</a>
             <a class="nav-link nav-link-title" href="pharmacy">Pharmacy</a>
             <a class="nav-link nav-link-title" href="contact">Contact Us</a>
             <a class="nav-link nav-link-title" href="departments"
               >Departments</a
             >
-            <a class="nav-link nav-link-title active" href="doctors">Doctors</a>
-            <a href="signOut">
-              <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
+            <a class="nav-link nav-link-title" href="doctors">Doctors</a>
+            <a href="signIn">
+              <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
             </a>
           </div>
         </nav>
@@ -38,62 +38,55 @@
     <div class="contact_section layout_padding margin_90">
       <div class="col-md-6">
         <form method="post" class="contact_box">
-          <h1 class="book_text">Add Doctor</h1>
+          <h1 class="book_text">OP Ticket</h1>
           {% if invalidCreds %}
           <div style="display: flex; align-items: center">
             <i class="fa fa-exclamation-circle warning" aria-hidden="true"></i>
-            <span> Error: Unable to add doctor </span>
+            <span> Error: Unable to add doctor</span>
           </div>
           {% endif %}
           <input
             type="text"
             class="text_box"
-            placeholder="Doctor Name"
+            placeholder="Patient Name"
             name="name"
             required
           />
-          <select name="department" class="text_box select_box">
-            <option value="">Select department</option>
-            {% for dept in departments %}
-            <option value="{{dept.id}}">{{dept.name}}</option>
-            {% endfor %}
-          </select>
-          <input
-            type="time"
-            class="text_box"
-            placeholder="OP start time"
-            name="start_time"
-            required
-          />
-          <input
-            type="time"
-            class="text_box"
-            placeholder="OP end time"
-            name="end_time"
-            required
-          />
-          <div id="dropdownSelected"></div>
-          <select
-            class="text_box select_box"
-            name="active_days"
-            multiple
-            search="false"
-          >
-            <option value="{{0}}">SUNDAY</option>
-            <option value="{{1}}">MONDAY</option>
-            <option value="{{2}}">TUESDAY</option>
-            <option value="{{3}}">WEDNESDAY</option>
-            <option value="{{4}}">THURSDAY</option>
-            <option value="{{5}}">FRIDAY</option>
-            <option value="{{6}}">SATURDAY</option>
-          </select>
           <input
             type="number"
             class="text_box"
-            placeholder="Consultation Charge"
-            name="consultation_charge"
+            placeholder="Age"
+            name="age"
             required
           />
+          <input
+            type="text"
+            class="text_box"
+            placeholder="Phone number"
+            name="number"
+            required
+          />
+          <input
+            type="text"
+            class="text_box"
+            placeholder="Place"
+            name="place"
+            required
+          />
+          <select name="doctor" class="text_box select_box">
+            <option value="">Select doctor</option>
+
+            {% for doctor in doctors %}
+            <option value="{{doctor.id}}">{{doctor.name}} - {{doctor.department.name}}</option>
+            {% endfor %}
+          </select>
+          <input
+            type="date"
+            class="text_box"
+            placeholder="Date"
+            name="date"
+            required
+          />  
           <div class="send_bt"><input type="submit" value="Proceed" /></div>
         </form>
       </div>

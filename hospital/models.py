@@ -24,3 +24,11 @@ class Admin(models.Model):
     password = models.CharField(max_length=10)
     token = models.CharField(
         max_length=20, default=None, blank=True, null=True)
+    
+class OPTicket(models.Model):
+    name=models.CharField(max_length=50)
+    age=models.IntegerField()
+    number=models.CharField(max_length=10)
+    place=models.CharField(max_length=30)
+    date=models.DateField()
+    doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)

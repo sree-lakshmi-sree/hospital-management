@@ -1,6 +1,6 @@
 const MultiSelectDropdown = (params) => {
   let config = {
-    search: true,
+    search: false,
     hideX: false,
     useStyles: true,
     placeholder: 'Select...',
