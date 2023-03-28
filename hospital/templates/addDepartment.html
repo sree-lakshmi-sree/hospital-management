@@ -20,41 +20,38 @@
             </a>
           </div>
           <div class="nav-bar">
-            <a class="nav-link nav-link-title active" href="home">Home</a>
+            <a class="nav-link nav-link-title" href="home">Home</a>
             <a class="nav-link nav-link-title" href="pharmacy">Pharmacy</a>
             <a class="nav-link nav-link-title" href="contact">Contact Us</a>
-            {% if not logged_in %}
-            <a href="signIn">
-              <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
-            </a>
-            {% endif %}
-            {% if logged_in%}
             <a class="nav-link nav-link-title" href="departments">Departments</a>
-            <a class="nav-link nav-link-title" href="doctors">Doctors</a>
+            <a class="nav-link nav-link-title active" href="doctors">Doctors</a>
             <a href="signOut">
               <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
             </a>
-            {% endif%}
           </div>
         </nav>
       </center>
-      <div class="banner_section">
-        <div class="container">
-          <div class="col-md-6">
-            <h1 class="banner_taital">
-              Health <br /><span style="color: #151515">Care</span>
-            </h1>
-            <div class="btn_main">
-              <div class="op_ticket_bt"><a href="#">Book an OP Ticket</a></div>
-              <div class="contact_bt"><a href="#">Contact Now</a></div>
-            </div>
+    </div>
+    <div class="contact_section layout_padding margin_90">
+      <div class="col-md-6">
+        <form method="post" class="contact_box">
+          <h1 class="book_text">Add Department</h1>
+          {% if duplicate_name %}
+          <div style="display: flex; align-items: center">
+            <i class="fa fa-exclamation-circle warning" aria-hidden="true"></i>
+            <span> Error: Department name already exists </span>
           </div>
-          <div class="col-md-6">
-            <div class="image">
-              <img src="{% static 'images/img-1.png' %}" />
-            </div>
-          </div>
-        </div>
+          {% endif %}
+          <input
+            type="text"
+            class="text_box"
+            placeholder="Department Name"
+            name="name"
+            required
+          />
+          <textarea placeholder="Department Description" class="text_box text_area" name="description"></textarea>
+          <div class="send_bt"><input type="submit" value="Proceed" /></div>
+        </form>
       </div>
     </div>
   </body>

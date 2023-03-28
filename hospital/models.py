@@ -3,14 +3,15 @@ from django.db import models
 
 
 class Department(models.Model):
-    name = models.CharField(primary_key=True,max_length=40,unique=True)
+    name = models.CharField(max_length=40,unique=True)
+    description = models.CharField(null=True, blank=True, max_length=500)
 
 class Doctor(models.Model):
     name = models.CharField(max_length=20)
     department = models.ForeignKey(Department,on_delete=models.CASCADE)
     op_start_time = models.TimeField()
     op_end_time = models.TimeField()
-    op_slot = models.CharField(max_length=50)
+    active_days = models.JSONField(null=True)
     consultation_charge = models.IntegerField()
 
 

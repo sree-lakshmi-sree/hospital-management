@@ -20,24 +20,20 @@
             </a>
           </div>
           <div class="nav-bar">
-            <a class="nav-link nav-link-title active" href="home">Home</a>
+            <a class="nav-link nav-link-title" href="home">Home</a>
             <a class="nav-link nav-link-title" href="pharmacy">Pharmacy</a>
             <a class="nav-link nav-link-title" href="contact">Contact Us</a>
-            {% if not logged_in %}
-            <a href="signIn">
-              <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
-            </a>
-            {% endif %}
-            {% if logged_in%}
-            <a class="nav-link nav-link-title" href="departments">Departments</a>
+            <a class="nav-link nav-link-title active" href="departments"
+              >Departments</a
+            >
             <a class="nav-link nav-link-title" href="doctors">Doctors</a>
             <a href="signOut">
               <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
             </a>
-            {% endif%}
           </div>
         </nav>
       </center>
+      {% if not departments %}
       <div class="banner_section">
         <div class="container">
           <div class="col-md-6">
@@ -45,8 +41,9 @@
               Health <br /><span style="color: #151515">Care</span>
             </h1>
             <div class="btn_main">
-              <div class="op_ticket_bt"><a href="#">Book an OP Ticket</a></div>
-              <div class="contact_bt"><a href="#">Contact Now</a></div>
+              <div class="op_ticket_bt">
+                <a href="addDepartment">Add a Department</a>
+              </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -56,6 +53,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
     </div>
   </body>
 </html>

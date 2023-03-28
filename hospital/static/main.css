@@ -179,6 +179,10 @@ img {
   margin-top: 30px;
 }
 
+.text_area {
+  height: 200px;
+}
+
 .select_box {
   width: 87.5%
 }
@@ -223,12 +227,14 @@ body {
   font-family: sans-serif;
 }
 
+textarea:focus-visible,
 select:focus-visible,
 input:focus-visible {
   outline: none;
   border-bottom: 1px solid teal;
 }
 
+textarea::placeholder,
 input::placeholder {
   color: rgb(175, 203, 203);
 }

@@ -2,7 +2,7 @@ import random
 import string
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
-from .models import Admin, Doctor
+from .models import Admin, Department, Doctor
 
 # Create your views here.
 
@@ -69,8 +69,45 @@ def doctors(request):
     return redirect(signIn)
 
 
+def departments(request):
+    if (authenticate(request)):
+        departments = Department.objects.all()
+        params = {"logged_in": True, "departments": departments}
+        return render(request, "departments.html", params)
+    return redirect(signIn)
+
+
+@csrf_exempt
 def addDoctor(request):
     if (authenticate(request)):
-        params = {"logged_in": True}
+        if request.method == "POST":
+            name = request.POST["name"]
+            department = request.POST["department"]
+            start_time = request.POST["start_time"]
+            end_time = request.POST["end_time"]
+            active_days = request.POST.getlist("active_days")
+            consultation_charge = request.POST["consultation_charge"]
+            try:
+                Doctor.objects.create(name=name, op_start_time=start_time, op_end_time=end_time,
+                                      active_days=active_days, consultation_charge=consultation_charge, department_id=department)
+            except Exception as e:
+                print(e)
+        departments = Department.objects.all()
+        params = {"logged_in": True, "departments": departments}
         return render(request, "addDoctor.html", params)
+    return redirect(signIn)
+
+
+@csrf_exempt
+def addDepartment(request):
+    if (authenticate(request)):
+        if request.method == "POST":
+            name = request.POST["name"]
+            description = request.POST["description"]
+            if (Department.objects.filter(name=name).exists()):
+                return render(request, "addDepartment.html", {"logged_in": True, "duplicate_name": True})
+            Department.objects.create(name=name, description=description)
+            return redirect(departments)
+        params = {"logged_in": True}
+        return render(request, "addDepartment.html", params)
     return redirect(signIn)
