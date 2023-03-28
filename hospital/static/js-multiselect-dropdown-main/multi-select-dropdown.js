@@ -1,9 +1,9 @@
 const MultiSelectDropdown = (params) => {
   let config = {
     search: false,
-    hideX: false,
+    hideX: true,
     useStyles: true,
-    placeholder: 'Select...',
+    placeholder: 'Active Days',
     txtSelected: 'Selected',
     txtAll: 'All',
     txtRemove: 'Remove',
@@ -109,7 +109,7 @@ const MultiSelectDropdown = (params) => {
 
       div.refresh = () => {
         // For demo purposes, remove
-        let tempSelectedList = document.getElementById('dropdownSelected');
+        // let tempSelectedList = document.getElementById('dropdownSelected');
 
         div.querySelectorAll('span.optext, span.placeholder').forEach((placeholder) => div.removeChild(placeholder));
         let selected = Array.from(multiSelect.selectedOptions);
@@ -121,15 +121,15 @@ const MultiSelectDropdown = (params) => {
             })
           );
           // For demo purposes, remove
-          tempSelectedList
-            .querySelectorAll('span')
-            .forEach((span, index) => index !== 0 && tempSelectedList.removeChild(span));
-          selected.map((option) => tempSelectedList.appendChild(newElement('span', { text: option.text })));
+          // tempSelectedList
+          //   .querySelectorAll('span')
+          //   .forEach((span, index) => index !== 0 && tempSelectedList.removeChild(span));
+          // selected.map((option) => tempSelectedList.appendChild(newElement('span', { text: option.text })));
         } else {
           // For demo purposes, remove
-          tempSelectedList
-            .querySelectorAll('span')
-            .forEach((span, index) => index !== 0 && tempSelectedList.removeChild(span));
+          // tempSelectedList
+          //   .querySelectorAll('span')
+          //   .forEach((span, index) => index !== 0 && tempSelectedList.removeChild(span));
 
           selected.map((option) => {
             let span = newElement('span', {
@@ -153,7 +153,7 @@ const MultiSelectDropdown = (params) => {
             }
             div.appendChild(span);
             // For demo purposes, remove
-            tempSelectedList.appendChild(newElement('span', { text: option.text }));
+            // tempSelectedList.appendChild(newElement('span', { text: option.text }));
           });
         }
         if (multiSelect.selectedOptions?.length === 0) {
@@ -164,7 +164,7 @@ const MultiSelectDropdown = (params) => {
             })
           );
           // For demo purposes, remove
-          tempSelectedList.appendChild(newElement('span', { text: 'n/a' }));
+          // tempSelectedList.appendChild(newElement('span', { text: 'n/a' }));
         }
       };
       div.refresh();

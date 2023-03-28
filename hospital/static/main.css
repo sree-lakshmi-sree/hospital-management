@@ -168,15 +168,17 @@ img {
   font-weight: 500;
 }
 
+.multiselect-dropdown,
 .text_box {
   width: 80%;
   float: left;
   font-size: 18px;
   color: teal;
   background-color: #ffffff;
-  padding: 5px 15px;
-  border: 0px;
+  padding: 5px 15px !important;
+  border: 0px !important;
   margin-top: 30px;
+  border-radius: 0px !important;
 }
 
 .text_area {
@@ -234,9 +236,10 @@ input:focus-visible {
   border-bottom: 1px solid teal;
 }
 
+.placeholder,
 textarea::placeholder,
 input::placeholder {
-  color: rgb(175, 203, 203);
+  color: rgb(175, 203, 203) !important;
 }
 
 .warning {
