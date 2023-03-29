@@ -32,3 +32,9 @@ class OPTicket(models.Model):
     place=models.CharField(max_length=30)
     date=models.DateField()
     doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)
+
+class Medicine(models.Model):
+    name=models.CharField(max_length=50)
+    price=models.FloatField()
+    available_count=models.BooleanField(default=True)
+    description=models.CharField(null=True, blank=True, max_length=500)
