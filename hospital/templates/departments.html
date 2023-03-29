@@ -62,12 +62,24 @@
       {% endif %}
     </div>
     <div class="section_container layout_padding">
-      {% for department in departments %}
-      <div class="box_main">
-        <h4 class="card-title">{{department.name}}</h4>
-        <h5 class="card-description">{{department.description}}</h5>
-      </div>
-      {% endfor %}
+      <table>
+        <thead>
+          <tr>
+            <th>SL.No</th>
+            <th>Name</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tboady>
+          {% for department in departments %}
+          <tr>
+            <td>{{department.id}}</td>
+            <td>{{department.name}}</td>
+            <td>{{department.description}}</td>
+          </tr>
+          {% endfor %}
+        </tboady>
+      </table>
     </div>
   </body>
 </html>

@@ -281,6 +281,7 @@ a {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  justify-content: center;
 }
 
 .layout_padding {
@@ -329,4 +330,23 @@ a {
 
 .fee {
   margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+}
+
+thead {
+  background-color: #4bc5b8;
+}
+
+tbody{
+  background-color: #ddedef;
+
 }

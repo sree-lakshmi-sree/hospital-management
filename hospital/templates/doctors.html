@@ -62,31 +62,49 @@
       {% endif %}
     </div>
     <div class="section_container layout_padding">
-      {% for doctor in doctors %}
-      <div class="box_main">
-        <h4 class="card-title">{{doctor.name}}</h4>
-        <h5 class="card-description">{{doctor.department.name}}</h5>
-        <div class="timing">{{doctor.op_start_time}} - {{doctor.op_end_time}}</div>
-        <div class="days">
-          {% for day in doctor.active_days %} {% if day == "0" %}
-          <div class="day"> SUNDAY</div>
-          {% elif day == "1"%}
-          <div class="day"> MONDAY</div>
-          {% elif day == "2"%}
-          <div class="day"> TUESDAY</div>
-          {% elif day == "3"%}
-          <div class="day"> WEDNESDAY</div>
-          {% elif day == "4"%}
-          <div class="day"> THURSDAY</div>
-          {% elif day == "5"%}
-          <div class="day"> FRIDAY</div>
-          {% elif day == "6"%}
-          <div class="day"> SATURDAY</div>
-          {% endif %} {% endfor %}
-        </div>
-        <div class="fee">Consultation Fee: {{doctor.consultation_charge}}</div class="fee">
-      </div>
-      {% endfor %}
+      <table>
+        <thead>
+          <tr>
+            <th>SL.No</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>OP Start Time</th>
+            <th>OP End Time</th>
+            <th>Active Days</th>
+            <th>Consultation Fee</th>
+          </tr>
+        </thead>
+        <tboady>
+          {% for doctor in doctors %}
+          <tr>
+            <td>{{doctor.id}}</td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.department.name}}</td>
+            <td>{{doctor.op_start_time}}</td>
+            <td>{{doctor.op_end_time}}</td>
+            <td>{% for day in doctor.active_days %}
+              {% if day == "0" %}
+                SUNDAY
+              {% elif day == "1"%}
+                MONDAY
+              {% elif day == "2"%}
+                TUESDAY
+              {% elif day == "3"%}
+                WEDNESDAY
+              {% elif day == "4"%}
+                THURSDAY
+              {% elif day == "5"%}
+                FRIDAY
+              {% elif day == "6"%}
+                SATURDAY
+              {% endif %} 
+            {% endfor %}
+            </td>
+            <td>{{doctor.consultation_charge}}</td>
+          </tr>
+          {% endfor %}
+        </tboady>
+      </table>
     </div>
   </body>
 </html>
