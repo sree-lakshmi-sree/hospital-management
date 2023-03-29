@@ -27,13 +27,19 @@
               >Departments</a
             >
             <a class="nav-link nav-link-title" href="doctors">Doctors</a>
+            {% if logged_in%}
             <a href="signOut">
               <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
             </a>
+            {% else%}
+            <a href="signIn">
+              <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
+            </a>
+            {% endif%}
           </div>
         </nav>
       </center>
-      {% if not departments %}
+      {% if logged_in %}
       <div class="banner_section">
         <div class="container">
           <div class="col-md-6">
@@ -54,6 +60,14 @@
         </div>
       </div>
       {% endif %}
+    </div>
+    <div class="section_container layout_padding">
+      {% for department in departments %}
+      <div class="box_main">
+        <h4 class="card-title">{{department.name}}</h4>
+        <h5 class="card-description">{{department.description}}</h5>
+      </div>
+      {% endfor %}
     </div>
   </body>
 </html>

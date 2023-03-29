@@ -62,19 +62,20 @@ def signOut(request):
 
 
 def doctors(request):
+    doctors = Doctor.objects.all()
+    departments = Department.objects.all()
     if (authenticate(request)):
-        doctors = Doctor.objects
         params = {"logged_in": True, "doctors": doctors}
         return render(request, "doctors.html", params)
-    return redirect(signIn)
+    return render(request, "doctors.html", {"logged_in": False, "doctors": doctors,"departments":departments})
 
 
 def departments(request):
+    departments = Department.objects.all()
     if (authenticate(request)):
-        departments = Department.objects.all()
         params = {"logged_in": True, "departments": departments}
         return render(request, "departments.html", params)
-    return redirect(signIn)
+    return render(request, "departments.html",  {"logged_in": False, "departments": departments})
 
 
 @csrf_exempt
@@ -92,6 +93,7 @@ def addDoctor(request):
                                       active_days=active_days, consultation_charge=consultation_charge, department_id=department)
             except Exception as e:
                 print(e)
+            return redirect(doctors)
         departments = Department.objects.all()
         params = {"logged_in": True, "departments": departments}
         return render(request, "addDoctor.html", params)
