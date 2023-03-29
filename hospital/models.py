@@ -36,5 +36,5 @@ class OPTicket(models.Model):
 class Medicine(models.Model):
     name=models.CharField(max_length=50)
     price=models.FloatField()
-    available_count=models.BooleanField(default=True)
+    available_count=models.IntegerField()
     description=models.CharField(null=True, blank=True, max_length=500)

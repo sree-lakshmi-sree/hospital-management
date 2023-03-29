@@ -11,5 +11,7 @@ urlpatterns = [
     path('departments', views.departments),
     path('addDoctor',views.addDoctor),
     path('addDepartment',views.addDepartment),
-    path('book-ticket',views.bookTicket)
+    path('book-ticket',views.bookTicket),
+    path('add-medicine',views.addMedicine),
+    path('pharmacy',views.medicines)
 ]

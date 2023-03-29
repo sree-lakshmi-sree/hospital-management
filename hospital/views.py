@@ -2,7 +2,7 @@ import random
 import string
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
-from .models import Admin, Department, Doctor, OPTicket
+from .models import Admin, Department, Doctor, Medicine, OPTicket
 
 # Create your views here.
 
@@ -130,3 +130,24 @@ def bookTicket(request):
     departments = Department.objects.all()
     doctors = Doctor.objects.all()
     return render(request, 'bookTicket.html', {"departments": departments, "doctors": doctors})
+
+
+@csrf_exempt
+def addMedicine(request):
+    if request.method == "POST":
+        name = request.POST["name"]
+        price = request.POST["price"]
+        available_count = request.POST["available_count"]
+        description = request.POST["description"]
+        Medicine.objects.create(name=name, price=price, available_count=available_count, description=description)
+        return redirect(home)
+    return render(request, 'addMedicine.html', {})
+
+
+@csrf_exempt
+def medicines(request):
+    medicines = Medicine.objects.all()
+    if (authenticate(request)):
+        params = {"logged_in": True, "medicines": medicines}
+        return render(request, "pharmacy.html", params)
+    return render(request, "pharmacy.html", {"logged_in": False, "medicines": medicines})
