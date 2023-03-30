@@ -28,7 +28,9 @@
 
 .banner_section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .btn_main {
@@ -346,7 +348,16 @@ thead {
   background-color: #4bc5b8;
 }
 
-tbody{
+tbody {
   background-color: #ddedef;
+}
 
+.token {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background: white;
+  font-size: 30px;
+  font-weight: bold;
 }

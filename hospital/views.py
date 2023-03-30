@@ -67,7 +67,7 @@ def doctors(request):
     if (authenticate(request)):
         params = {"logged_in": True, "doctors": doctors}
         return render(request, "doctors.html", params)
-    return render(request, "doctors.html", {"logged_in": False, "doctors": doctors,"departments":departments})
+    return render(request, "doctors.html", {"logged_in": False, "doctors": doctors, "departments": departments})
 
 
 def departments(request):
@@ -124,12 +124,13 @@ def bookTicket(request):
         number = request.POST["number"]
         date = request.POST["date"]
         doctor = request.POST["doctor"]
-        OPTicket.objects.create(
+        ticket = OPTicket.objects.create(
             name=name, age=age, place=place, number=number, date=date, doctor_id=doctor)
-        return redirect(home)
+        token = ticket.id
+        return render(request, "home.html", {"logged_in": False, "token": token})
     departments = Department.objects.all()
     doctors = Doctor.objects.all()
-    return render(request, 'bookTicket.html', {"departments": departments, "doctors": doctors})
+    return render(request, 'bookTicket.html', {"logged_in":authenticate(request),"departments": departments, "doctors": doctors})
 
 
 @csrf_exempt
@@ -140,7 +141,7 @@ def addMedicine(request):
         available_count = request.POST["available_count"]
         description = request.POST["description"]
         Medicine.objects.create(name=name, price=price, available_count=available_count, description=description)
-        return redirect(home)
+        return redirect(medicines)
     return render(request, 'addMedicine.html', {})
 
 
