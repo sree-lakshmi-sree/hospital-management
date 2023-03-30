@@ -12,7 +12,7 @@
   <body>
     <div class="header_section">
       <center>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar">
           <div class="logo">
             <a href="#">
               <i class="fa fa-hospital-o hospital-logo" aria-hidden="true"></i>
@@ -20,9 +20,11 @@
             </a>
           </div>
           <div class="nav-bar">
-            <a class="nav-link nav-link-title" href="home">Home</a>
-            <a class="nav-link nav-link-title" href="pharmacy">Pharmacy</a>
-            <a class="nav-link nav-link-title" href="contact">Contact Us</a>
+            <a class="nav-link-title" href="home">Home</a>
+            <a class="nav-link-title" href="pharmacy">Pharmacy</a>
+            <a class="nav-link-title" href="contact-us">Contact Us</a>
+            <a class="nav-link-title" href="departments">Departments</a>
+            <a class="nav-link-title" href="doctors">Doctors</a>
             <a href="signIn">
               <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
             </a>
@@ -30,8 +32,8 @@
         </nav>
       </center>
     </div>
-    <div class="contact_section layout_padding margin_90">
-      <div class="col-md-6">
+    <div class="contact_section layout_padding">
+      <div>
         <form method="post" class="contact_box">
           <h1 class="book_text">Sign Up</h1>
           {% if invalidCreds %}

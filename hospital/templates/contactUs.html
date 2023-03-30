@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hospital Management</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="header_section">
+      <center>
+        <nav class="navbar">
+          <div class="logo">
+            <a href="#">
+              <i class="fa fa-hospital-o hospital-logo" aria-hidden="true"></i>
+              Hospital Management
+            </a>
+          </div>
+          <div class="nav-bar">
+            <a class="nav-link-title" href="home">Home</a>
+            <a class="nav-link-title" href="pharmacy">Pharmacy</a>
+            <a class="nav-link-title active" href="contact-us"
+              >Contact Us</a
+            >
+            <a class="nav-link-title" href="departments"
+              >Departments</a
+            >
+            <a class="nav-link-title" href="doctors">Doctors</a>
+            {% if logged_in%}
+            <a href="signOut">
+              <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
+            </a>
+            {% else%}
+            <a href="signIn">
+              <i class="fa fa-user-plus user-logo" aria-hidden="true"></i>
+            </a>
+            {% endif%}
+          </div>
+        </nav>
+      </center>
+    </div>
+    <div class="blank"></div>
+    <div class="banner_section contact_section contact-bg">
+      <div class="container flex-column">
+        <div class="section_container">
+          <div>
+            <h1 class="contact_header">What we do</h1>
+            <div class="icon_main">
+              <div class="contact_icons">
+                <i class="fa fa-user-md" aria-hidden="true"></i>
+              </div>
+              <h4 class="contact_text">Diabetes and obesity Counselling</h4>
+            </div>
+            <div class="icon_main">
+              <div class="contact_icons">
+                <i class="fa fa-stethoscope" aria-hidden="true"></i>
+              </div>
+              <h4 class="contact_text">Obstetrics and Gynsecology</h4>
+            </div>
+            <div class="icon_main">
+              <div class="contact_icons">
+                <i class="fa fa-heartbeat" aria-hidden="true"></i>
+              </div>
+              <h4 class="contact_text">
+                Heart & Cardiovascular Diagnostic Services
+              </h4>
+            </div>
+            <div class="icon_main">
+              <div class="contact_icons">
+                <i class="fa fa-child" aria-hidden="true"></i>
+              </div>
+              <h4 class="contact_text">Pediatric Oncology</h4>
+            </div>
+          </div>
+          <form method="post" class="contact_box">
+            <h1 class="book_text">Book OP Ticket</h1>
+            <input
+              type="text"
+              class="text_box"
+              placeholder="Patient Name"
+              name="name"
+              required
+            />
+            <input
+              type="number"
+              class="text_box"
+              placeholder="Age"
+              name="age"
+              required
+            />
+            <input
+              type="number"
+              class="text_box"
+              placeholder="Phone number"
+              name="number"
+              oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);"
+              required
+            />
+            <input
+              type="text"
+              class="text_box"
+              placeholder="Place"
+              name="place"
+              required
+            />
+            <select name="doctor" class="text_box select_box">
+              <option value="">Select doctor</option>
+
+              {% for doctor in doctors %}
+              <option value="{{doctor.id}}">
+                {{doctor.name}} - {{doctor.department.name}}
+              </option>
+              {% endfor %}
+            </select>
+            <input
+              type="date"
+              class="text_box"
+              placeholder="Date"
+              name="date"
+              required
+            />
+            <div class="send_bt"><input type="submit" value="Proceed" /></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="blank"></div>
+    <div class="footer_section layout_padding">
+      <div class="container footer">
+        <div class="footer-section">
+          <h1>Contact Us</h1>
+          <div>Building number Address of the Hospital</div>
+          </br>
+          <div>+7586656566</div></br>
+          <div>
+           volim@gmail.com
+          </div>
+        </div>
+        <div class="footer-section">
+          <h1>Doctors</h1>
+          <div>
+            We have the most experienced and talented doctors in the 
+            country.
+            Each patient is given utmost care and high quality treatment
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

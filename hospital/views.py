@@ -130,7 +130,7 @@ def bookTicket(request):
         return render(request, "home.html", {"logged_in": False, "token": token})
     departments = Department.objects.all()
     doctors = Doctor.objects.all()
-    return render(request, 'bookTicket.html', {"logged_in":authenticate(request),"departments": departments, "doctors": doctors})
+    return render(request, 'bookTicket.html', {"logged_in": authenticate(request), "departments": departments, "doctors": doctors})
 
 
 @csrf_exempt
@@ -140,7 +140,8 @@ def addMedicine(request):
         price = request.POST["price"]
         available_count = request.POST["available_count"]
         description = request.POST["description"]
-        Medicine.objects.create(name=name, price=price, available_count=available_count, description=description)
+        Medicine.objects.create(
+            name=name, price=price, available_count=available_count, description=description)
         return redirect(medicines)
     return render(request, 'addMedicine.html', {})
 
@@ -152,3 +153,7 @@ def medicines(request):
         params = {"logged_in": True, "medicines": medicines}
         return render(request, "pharmacy.html", params)
     return render(request, "pharmacy.html", {"logged_in": False, "medicines": medicines})
+
+
+def contactUs(request):
+    return render(request, "contactUs.html", {"logged_in": authenticate(request)})

@@ -13,5 +13,6 @@ urlpatterns = [
     path('addDepartment',views.addDepartment),
     path('book-ticket',views.bookTicket),
     path('add-medicine',views.addMedicine),
-    path('pharmacy',views.medicines)
+    path('pharmacy',views.medicines),
+    path('contact-us',views.contactUs)
 ]

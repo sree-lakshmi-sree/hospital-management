@@ -12,7 +12,7 @@
   <body>
     <div class="header_section">
       <center>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar">
           <div class="logo">
             <a href="#">
               <i class="fa fa-hospital-o hospital-logo" aria-hidden="true"></i>
@@ -20,13 +20,13 @@
             </a>
           </div>
           <div class="nav-bar">
-            <a class="nav-link nav-link-title active" href="home">Home</a>
-            <a class="nav-link nav-link-title" href="pharmacy">Pharmacy</a>
-            <a class="nav-link nav-link-title" href="contact">Contact Us</a>
-            <a class="nav-link nav-link-title" href="departments"
+            <a class="nav-link-title active" href="home">Home</a>
+            <a class="nav-link-title" href="pharmacy">Pharmacy</a>
+            <a class="nav-link-title" href="contact-us">Contact Us</a>
+            <a class="nav-link-title" href="departments"
               >Departments</a
             >
-            <a class="nav-link nav-link-title" href="doctors">Doctors</a>
+            <a class="nav-link-title" href="doctors">Doctors</a>
             {% if logged_in%}
             <a href="signOut">
               <i class="fa fa-sign-out user-logo" aria-hidden="true"></i>
@@ -44,7 +44,7 @@
         <div class="token">Your Token No: {{token}}</div>
         {% endif %}
         <div class="container">
-          <div class="col-md-6">
+          <div class="contact-column">
             <h1 class="banner_taital">
               Health <br /><span style="color: #151515">Care</span>
             </h1>
@@ -52,10 +52,10 @@
               <div class="op_ticket_bt">
                 <a href="book-ticket">Book an OP Ticket</a>
               </div>
-              <div class="contact_bt"><a href="#">Contact Now</a></div>
+              <div class="contact_bt"><a href="contact-us">Contact Now</a></div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="contact-column">
             <div class="image">
               <img src="{% static 'images/img-1.png' %}" />
             </div>
